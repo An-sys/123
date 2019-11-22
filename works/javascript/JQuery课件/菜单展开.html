@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单展开</title>
+    <style>
+        body,ul,li,h2{ margin: 0; padding: 0; }
+        li{list-style: none;}
+
+        #menu h2{
+            width: 150px;
+            height: 50px;
+            background: skyblue;
+            text-align: center;
+            line-height: 50px;
+            border-bottom: 1px solid #566;
+
+        }
+
+        #menu ul {
+            display: none;
+        }
+
+        #menu ul li{
+            width: 150px;
+            height: 30px;
+            background: #ccc;
+            text-align: center;
+            line-height: 30px;
+            border-bottom: 1px solid #566;
+        }
+
+    </style>
+    <script src="./jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    
+    <div id="menu">
+        <h2>会员管理</h2>
+        <ul>
+            <li>统计页面</li>
+            <li>会员列表</li>
+            <li>会员删除</li>
+            <li>会员管理</li>
+        </ul>
+        <h2>订单管理</h2>
+        <ul>
+            <li>统计页面</li>
+            <li>会员列表</li>
+            <li>会员删除</li>
+            <li>会员管理</li>
+        </ul>
+        <h2>分类管理</h2>
+        <ul>
+            <li>统计页面</li>
+            <li>会员列表</li>
+            <li>会员删除</li>
+            <li>会员管理</li>
+        </ul>
+        <h2>管理员管理</h2>
+        <ul>
+            <li>统计页面</li>
+            <li>会员列表</li>
+            <li>会员删除</li>
+            <li>会员管理</li>
+        </ul>
+    </div>
+
+    
+    <script>
+        
+        // 普通版
+        // $('h2').click(function(){
+        //         $(this).next('ul').slideToggle(1000);
+        // });
+
+
+        // 手风琴版
+        // $('h2').click(function(){
+        //         $(this).next('ul').slideDown(1000).siblings('ul').slideUp(1000);
+        // });
+
+
+        
+
+
+
+    </script>
+
+
+
+    
+
+
+</body>
+</html>

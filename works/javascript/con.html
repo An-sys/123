@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script>
+		var root = document.getElementById("root");
+		root.style = "height: 500px; width: 400px; border:1px solid black;"
+
+		var cou = document.createElement("div");
+		root.appendChild(cou);
+		cou.style = "height: 100px; width: 400px";
+
+
+		var inp = document.createElement("input");
+		inp.type = 'text';
+		inp.style.border = '0px';
+		inp.style.width = '300px'
+		inp.style.margin = '25px'
+		inp.style.fontSize = '44px'
+		cou.appendChild(inp)
+
+		var spa = document.createElement('span')
+		cou.appendChild(spa);
+		spa.innerHTML = 'x'
+		spa.style = 'font-size: 25px;cursor: pointer'
+		spa.onmousedown = down;
+
+		var face = document.createElement("div");
+		root.appendChild(face);
+		face.style = "height: 400px; width: 400px; border-top:1px solid black;"
+
+		let bot = [
+			{name: '1', actione: 'num'},
+			{name: '7', actione: 'num'},
+			{name: '8', actione: 'num'},
+			{name: '+', actione: 'div'},
+
+			{name: '4', actione: 'num'},
+			{name: '5', actione: 'num'},
+			{name: '6', actione: 'num'},
+			{name: '-', actione: 'sub'},
+
+			{name: '1', actione: 'num'},
+			{name: '2', actione: 'num'},
+			{name: '3', actione: 'num'},
+			{name: '*', actione: 'sub'},
+
+			{name: '0', actione: 'num'},
+			{name: '.', actione: 'dot'},
+			{name: '=', actione: 'equal'},
+			{name: '+', actione: 'add'},
+		]
+
+		var str = '';
+		var ev;
+		function handle(event) {
+			// console.log(event.target.getAttribute("data-actione"));
+			var act = event.target.getAttribute("data-value");
+			if(act == '='){
+				inp.value = eval(str);
+				str = eval(str)
+			}else{
+				str += event.target.getAttribute("data-value");
+				inp.value = str
+			}
+		}
+
+		function render(bot) {
+			for(let item of bot){
+				let el = document.createElement("div");
+
+				el.innerHTML = item.name;
+				el.style.display ="inline-block"
+				el.style.width = '80px'
+				el.style.height = '80px'
+				el.style.margin = '9px'
+				el.style.lineHeight = '80px'
+				el.style.border = '1px solid black'
+				el.style.textAlign = 'center'
+				el.style.borderRadius = '100%'
+				el.style.cursor = 'pointer'
+				el.style.fontSize = '40px'
+				
+
+				el.setAttribute('data-actione', item.actione);
+				el.setAttribute('data-value', item.name);
+
+				el.onclick = handle;
+
+				face.appendChild(el)
+			}			
+		}
+
+		render(bot);
+
+		
+		function down(){
+			str = ''
+			inp.value = str
+		}
+
+	</script>
+</body>
+</html>

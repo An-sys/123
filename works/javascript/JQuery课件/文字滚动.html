@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字滚动</title>
+    <style>
+        body,ul{margin: 0; padding: 0;}
+        li{list-style: none;}
+
+        #userName{
+            width: 400px;
+            height: 53px;
+            border: 1px solid ;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    
+
+    <div id="userName">
+        <ul>
+            <li>恭喜91期郑龙获得 吴中石一个</li>
+            <li>恭喜91期王枫获得 法拉利一个</li>
+            <li>恭喜91期付康万里获得 别墅一套</li>
+            <li>恭喜91期庞瑞鹏获得 手推车一辆</li>
+            <li>恭喜91期王基权获得 比基尼一套</li>
+            <li>恭喜91期孙昌旭获得 桃子一箱</li>
+            <li>恭喜91期王泽津获得 海景别墅一套</li>
+            <li>恭喜91期陆建华获得 腾讯大楼一栋</li>
+        </ul>
+    </div>
+
+
+    <script>
+        
+        var height = $('#userName ul').find('li:first').height();
+
+
+
+        // setInterval(run, 1000)
+        // function run(){
+        //     $('#userName ul').animate({
+        //         'marginTop': -height + 'px'
+        //     }, 500, function(){
+        //         $('#userName ul').css('marginTop',0).find('li:first').appendTo($('#userName ul'))
+        //     })
+
+        // }
+
+
+        setInterval( function(){
+            $('#userName ul').animate({
+                'marginTop': -height + 'px'
+            }, 500, function(){
+                $('#userName ul').css('marginTop',0).find('li:first').appendTo($('#userName ul'))
+            })
+        }, 1000 );
+
+       
+
+
+    </script>
+
+
+</body>
+</html>

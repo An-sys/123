@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图层拖拽</title>
+    <style>
+        
+        #box{
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+            position: fixed;
+            left: 200px;
+            top: 200px;
+        }
+
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+
+    <script>
+        
+        $('#box').mousedown(function(event){
+            $(this).html('按下');
+            $(this).css('background','orange');
+
+            // 鼠标在 box内的坐标
+            var boxX = event.offsetX;
+            var boxY = event.offsetY;
+
+            $(document).mousemove(function(eve){
+                // 鼠标在 文档内的坐标
+                var docX = eve.pageX;
+                var docY = eve.pageY;
+
+                // 移动时保持鼠标在box内的坐标
+                var x = docX - boxX;
+                var y = docY - boxY;
+
+                if (x < 0) {
+                    x = 0;
+                }
+
+                if(y < 0){
+                    y = 0;
+                }
+
+
+                $('#box').css({
+                    left: x,
+                    top: y
+                })
+
+            })
+
+
+        }).mouseup(function(){
+            $(this).html('松开');
+            $(this).css('background','lightgreen');
+            $(document).off('mousemove');
+        });
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	body{padding: 0px;margin: 0px;}
+	.box{
+		width: 1000px;
+		height: 500px;
+		/*border: 1px solid red;*/
+		margin: 100px auto;
+		position: relative;
+	}
+
+	.box img{
+		width: 1000px;
+		height: 500px;
+		position: absolute;
+	}
+
+	#small{
+	    width: 100px;
+	    height: 30px;
+	    position: absolute;
+	    right: 30px;
+	    bottom: 10px;
+	}
+
+	#small .icon{
+	    width: 8px;
+	    height: 8px;
+	    border: 3px solid hsla(0,0%,100%,.3);
+	    background: rgba(0,0,0,0.4);
+	    border-radius: 100%;
+	    float: left;
+	    margin-right: 5px;
+	    cursor: pointer;
+	}
+
+	.sub{
+		width: 41px;
+		height: 69px;
+		/*border: 1px red solid;*/
+		background-image: url('./img/icon.png');
+		position: absolute;
+		cursor: pointer;
+	}
+
+	.sub:hover{
+		background-color: black;
+	}
+	
+	#upper{
+		background-position: 82px 0px;
+		top: 220px;
+	}
+
+	#next{
+		background-position: 44px 0px;
+		right: 0px;
+		top: 220px;
+	}
+	
+
+</style>
+<body>
+	<div class="box">
+		<img src="./img/1.jpg">
+		<img src="./img/2.jpg">
+		<img src="./img/3.jpg">
+		<img src="./img/4.jpg">
+		<img src="./img/5.jpg">
+		<div id="small">
+		    <div class="icon"></div>
+		    <div class="icon"></div>
+		    <div class="icon"></div>
+		    <div class="icon"></div>
+		    <div class="icon"></div>
+		</div>
+    	<div id="upper" class="sub" onclick="fupper()"></div>
+    	<div id="next" class="sub" onclick="fnext()"></div>
+	</div>
+
+	<script>
+		var img = document.getElementsByTagName('img');
+		var m = 0;
+		
+		// run();
+		chart(0);
+		var times = setInterval(run,4000);
+		function run(){
+			chart(m);
+			m++;
+			if(m == 5){
+				m = 0;
+			}
+			// console.log(m)
+		}
+
+		function chart(m){
+			for(var i = 0; i < img.length; i++){
+				img[i].style.opacity = 0;
+				img[i].style.transition = 'all 1s';
+				small.children[i].style.borderColor = 'hsla(0,0%,100%,.3)';
+				small.children[i].style.background = 'rgba(0,0,0,0.4)';
+			}
+
+			img[m].style.opacity = 1; 
+			small.children[m].style.borderColor = 'rgba(0,0,0,0.4)';
+			small.children[m].style.background = 'hsla(0,0%,100%,.3)';
+		}
+		
+
+		for(var i = 0; i < small.children.length; i++){
+
+		    (function(i){
+		        small.children[i].onclick = function(){
+		            clearInterval(times);
+		            m = i;
+		            chart(i);
+		            times = setInterval(run, 4000);
+		        }
+		    })(i);
+		}
+
+		function fupper(){
+			clearInterval(times);
+			m--;
+			if(m <= -1){
+				m = 4;
+			}
+			chart(m);
+			console.log(m);
+			times = setInterval(run, 4000);
+		}
+
+		
+		function fnext(){
+			clearInterval(times);
+			m++;
+			if(m  >= 5){
+				m = 0;
+			}
+			chart(m);
+			console.log(m);
+			times = setInterval(run, 4000);
+		}
+
+
+
+
+	</script>
+</body>
+</html>

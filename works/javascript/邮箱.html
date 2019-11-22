@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 800px;
+			height: 100px;
+			margin: 100px auto;
+			font-size: 20px;
+		}
+
+		
+		
+		.size{
+			font-size: 20px;
+		}
+	
+		
+	</style>
+</head>
+<body>
+	<div class="box size">
+		<form action="" name="cont" onsubmit="false" >
+			请输入邮箱:
+			<input type="text" name="ema" class="size text" onblur="lea()">
+			<span id="fal"></span>
+			<br>
+			<input type="submit" class="size" value="提交">
+		</form>
+	</div>
+	<script>
+		var email = document.getElementsByClassName("text");
+		function lea(){
+			var val = email[0].value;
+			var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+			var res = val.match(reg);
+			if( !res ){
+				fal.style.display = 'inline';
+				fal.innerHTML = '输入的邮箱格式不正确';
+				fal.style.color = 'red';
+				return false;
+
+				console.log('flase');
+			}else{
+				fal.style.display = 'none';
+				console.log('true');
+			}
+
+			return true;
+		}	
+
+		function bol(){
+			return lea();
+		}
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
